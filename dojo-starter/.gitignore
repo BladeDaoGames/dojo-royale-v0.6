@@ -1,0 +1,6 @@
+target
+.vscode
+.github
+
+manifests/
+*.manifest
