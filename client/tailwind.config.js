@@ -1,41 +1,77 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class"],
   content: [
-    "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}",
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
-  mode: "jit",
+  prefix: "",
   theme: {
-    extend: {
+    container: {
+      center: true,
+      padding: "2rem",
       screens: {
-        "h-sm": { raw: "(min-height: 500px)" },
-        "h-md": { raw: "(min-height: 700px)" },
-        "h-lg": { raw: "(min-height: 900px)" },
-        "2.5xl": { raw: "(min-width:1600px)" },
-        "2.75xl": { raw: "(min-width:1700px)" },
-        "3xl": { raw: "(min-width:1900px)" },
+        "2xl": "1400px",
       },
+    },
+    extend: {
       colors: {
-        "light-gray-100": "#d7d7d7",
-        "dark-gray-200": "#7a7a7a",
-        "regular-orange": "#f59a23",
-        "blue-gray-100": "#a3b9d6",
-        "darkest-gray-100": "#333333",
-        "discord-100": "#5865F2",
-        "twitter-100": "#1DA1F2",
-        "feedback-100": "#333333",
-        "arrow-colour-grey": "#8f8f8f",
-        "logo-background-dark-grey": "#7a7a7a",
-        "green-map": "#718d43",
-        "homeowner-font-colour": "#e2e2e2",
-        "ethereum-icon-fill": "#3d3d3d",
-        "grey-button-colour": "#7f7f7f",
-        "grey-player-healthbar": "#555555",
-        "winner-table-grey": "#797979",
-        "winner-table-font-grey": "#7f7f7f",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [],
-};
-
+  plugins: [require("tailwindcss-animate")],
+}
