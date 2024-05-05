@@ -21,6 +21,7 @@
     "@dojoengine/utils": "0.6.125",
     "@latticexyz/react": "^2.0.0-next.11",
     "@latticexyz/utils": "^2.0.0-next.11",
+    "@radix-ui/react-dialog": "^1.0.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "ethers": "^5.7.2",
