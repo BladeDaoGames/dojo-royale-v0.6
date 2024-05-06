@@ -90,7 +90,7 @@ export const Home = () => {
 
                     {/* PFP div */}
                     <div className="flex items-center justify-between 
-                    w-full h-[10em] 
+                    w-full h-[10em] my-2 mb-3
                     z-20
                     ">
                       <div
