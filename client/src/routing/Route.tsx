@@ -6,7 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { ROUTES } from "../constants/routing/routePath";
-import { Home } from "@/pages";
+import { Home, Lobby } from "@/pages";
 // import { ROUTES } from "../constants/routing/routePath";
 // import { InGame, Login, Reward, Rooms, WaitingRoom } from "../pages";
 // import { Game } from "../phaser";
@@ -17,8 +17,8 @@ const AppRoutes = () => {
       <Routes>
         <Route path={ROUTES.home} element={<Home />} />
         {/* <Route path={ROUTES.rooms} element={<Rooms />} /> */}
-        {/* <Route path={ROUTES.waiting} element={<WaitingRoom />} />
-        <Route path={ROUTES.readyRoom} element={<ReadyRoom />} />
+        <Route path={ROUTES.waiting} element={<Lobby />}/>
+        {/*<Route path={ROUTES.readyRoom} element={<ReadyRoom />} />
         <Route path={ROUTES.inGame} element={<InGame />} />
         <Route path={ROUTES.reward} element={<Reward />} /> */}
         {/* <Route path={ROUTES.testGame} element={<Game />} /> */}

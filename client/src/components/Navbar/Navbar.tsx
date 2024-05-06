@@ -109,7 +109,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onBackClick, getHomePage }) => {
                 </button>
               )}
 
-              // toggleSettings
               <div
                 className="mr-4 w-[56px] h-[56px] 2.5xl:w-[64px] 2.5xl:h-[64px] 3xl:w-[80px] 3xl:h-[80px] bg-no-repeat bg-contain bg-center cursor-pointer"
                 style={{
