@@ -11,3 +11,13 @@ export const playerNameCardImageUrl = "/images/home/player_name_card.png";
 export const buttonCardImageUrl = "/images/shared/button_card.png";
 export const buttonCardShortImageUrl = "/images/shared/button_card_short.png";
 export const arrowKeyImageUrl = "/images/shared/char_arrow_keys.png";
+
+export const inventoryCardImageUrl = "/images/waiting-room/inventory_card.png";
+export const inventoryBoxImageUrl = "/images/waiting-room/inventory_box.png";
+export const selectedInventoryBoxImageUrl ="/images/waiting-room/selected_inventory_box.png";
+
+export const characterCardImageUrl: { [key: string]: string } = {
+    0: "/characters/animated/drone.gif",
+    1: "./characters/animated/gaser.gif",
+    2: "./characters/animated/gunner.gif",
+};
