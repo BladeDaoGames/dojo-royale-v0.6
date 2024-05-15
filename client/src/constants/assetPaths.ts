@@ -21,3 +21,26 @@ export const characterCardImageUrl: { [key: string]: string } = {
     1: "./characters/animated/gaser.gif",
     2: "./characters/animated/gunner.gif",
 };
+
+export const pfpCardImageUrl = [
+    "./characters/profile/pilots/pilot0.png",
+    "./characters/profile/pilots/pilot1.png",
+    "./characters/profile/pilots/pilot2.png",
+    "./characters/profile/pilots/pilot3.png",
+    "./characters/profile/pilots/pilot4.png",
+    "./characters/profile/pilots/pilot5.png",
+    "./characters/profile/pilots/pilot6.png",
+    "./characters/profile/pilots/pilot7.png",
+    "./characters/profile/pilots/pilot8.png",
+    "./characters/profile/pilots/pilot9.png",
+    "./characters/profile/pilots/pilot10.png",
+    "./characters/profile/pilots/pilot11.png",
+    "./characters/profile/pilots/pilot12.png",
+    "./characters/profile/pilots/pilot13.png",
+    "./characters/profile/pilots/pilot14.png",
+    "./characters/profile/pilots/pilot15.png",
+    "./characters/profile/pilots/pilot16.png",
+    "./characters/profile/pilots/pilot17.png",
+    "./characters/profile/pilots/pilot18.png",
+    "./characters/profile/pilots/pilot19.png",
+];
