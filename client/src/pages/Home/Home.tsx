@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import { Navbar, SocialLink } from '@/components';
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from '@/constants/routing/routePath';
@@ -6,6 +6,7 @@ import { BasePage } from '../Base';
 import { motion } from "framer-motion";
 
 import { CarouselPFP } from './CarouselPFP';
+import { usePfpStore } from '@/store';
 
 import { GiPlasticDuck } from "react-icons/gi";
 import { BsDiscord } from "react-icons/bs";
@@ -17,11 +18,17 @@ import { Spinner } from "@/components/ui/spinner";
 // wallets
 import { useDojo } from "@/dojo/useDojo";
 import { formatAddress } from '@/utils';
+import { feltToString, stringToFelt } from "@/utils/starknet";
 
 // asset paths
 import { homeCardImageUrl, playerNameCardImageUrl, 
   buttonCardImageUrl, buttonCardShortImageUrl, 
   arrowKeyImageUrl } from '@/constants/assetPaths';
+  
+import { getEntityIdFromKeys } from "@dojoengine/utils";
+import { useComponentValue } from "@dojoengine/react";
+import { Entity } from "@dojoengine/recs";
+import { set } from 'mobx';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -29,10 +36,23 @@ export const Home = () => {
   const [getPlay, setPlay] = useState(false);
   
   const {
+    setup: {
+        systemCalls: { register_player, set_profile_pic },
+        clientComponents: { Player, Game },
+    },
     account,
   } = useDojo();
 
-  // State to hold the value of the input
+  const { pfpCarouselApi, setPfpCarouselApi } = usePfpStore();
+
+  // entity id we are syncing
+  const entityId = getEntityIdFromKeys([
+    BigInt(account?.account.address),
+  ]) as Entity;
+
+  console.log("entityId: ", entityId);
+
+  // State to hold the value of the input Name
   const [nameValue, setNameValue] = useState('');
 
   const handleSetPlay = () => {
@@ -67,11 +87,43 @@ export const Home = () => {
   };
 
   const handleNameTypingInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNameValue(event.target.value);
+    setNameValue(String(event.target.value));
   };
+
+  // get current component values
+  const player = useComponentValue(Player, entityId);
+  const [ playerRegistered, setPlayerRegistered ] = useState(false);
+  
+  useEffect(() => {
+    if (!player) {
+      pfpCarouselApi?.scrollTo(0);
+      setNameValue("");
+      setPlayerRegistered(false);
+      return;
+    };
+    setPlayerRegistered(true);
+    console.log("player: ", player);
+    if (player?.name === undefined) return;
+    if (!player?.name) return;
+    console.log("Player Name: ", feltToString(String(player?.name)))
+    setNameValue(feltToString(String(player?.name)))
+
+    if (player?.profile_pic === undefined) return;
+    console.log("player pfp num: ", player?.profile_pic)
+
+    if(!pfpCarouselApi) return;
+    pfpCarouselApi?.scrollTo(player?.profile_pic)
+
+  }, [player, pfpCarouselApi]);
+
   const registerName = () => {
-    console.log(nameValue);
-  }
+    console.log("registering: ", nameValue);
+    if (!nameValue || nameValue.trim() === '') return;
+    const pfpNum = pfpCarouselApi?.selectedScrollSnap()
+    if (pfpNum=== undefined) return;
+
+    register_player(account.account, nameValue, pfpNum);
+  }  
 
   return (
     <BasePage>
@@ -82,9 +134,7 @@ export const Home = () => {
           pt-2
           ">
 
-
           {getPlay ? 
-
               // Render this card if getPlay is true
               (
                 <div
@@ -113,21 +163,28 @@ export const Home = () => {
                         className="w-[12em]
                         py-2 pb-2.5 px-5
                         flex items-center rounded-lg 
-                        border-2 border-dark-gray-200 text-3xl"
+                        border-2 border-dark-gray-200 text-3xl
+                        disabled:text-white
+                        "
+
                         placeholder="Register Name"
                         maxLength={31}
                         value={nameValue}
                         onChange={handleNameTypingInput}
+                        disabled={playerRegistered}
                       />
 
-                      <button className="text-white bg-yellow-500
+                      <button className="text-white bg-yellow-500 
                       flex-grow flex items-center justify-center
                       py-3 px-4 rounded-lg font-semibold text-2xl
-                      hover:bg-yellow-700
+                      hover:bg-yellow-700 
+                      disabled:bg-gray-600 disabled:cursor-not-allowed
+                      disabled:text-gray-500
                       "
+                      disabled={playerRegistered}
                       onClick={registerName}
                       >
-                        Register Name
+                        {playerRegistered?"Registered":"Register Name"}
                       </button>
 
                     </div>
