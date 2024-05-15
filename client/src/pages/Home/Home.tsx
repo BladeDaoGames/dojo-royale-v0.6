@@ -5,6 +5,8 @@ import { ROUTES } from '@/constants/routing/routePath';
 import { BasePage } from '../Base';
 import { motion } from "framer-motion";
 
+import { CarouselPFP } from './CarouselPFP';
+
 import { GiPlasticDuck } from "react-icons/gi";
 import { BsDiscord } from "react-icons/bs";
 import { FaTwitter } from "react-icons/fa";
@@ -29,6 +31,9 @@ export const Home = () => {
   const {
     account,
   } = useDojo();
+
+  // State to hold the value of the input
+  const [nameValue, setNameValue] = useState('');
 
   const handleSetPlay = () => {
     setPlay(true);
@@ -61,6 +66,13 @@ export const Home = () => {
     },
   };
 
+  const handleNameTypingInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNameValue(event.target.value);
+  };
+  const registerName = () => {
+    console.log(nameValue);
+  }
+
   return (
     <BasePage>
          <Navbar onBackClick={()=>navigate(ROUTES.home)} getHomePage={true}/>
@@ -88,40 +100,8 @@ export const Home = () => {
                     }}
                   >
 
-                    {/* PFP div */}
-                    <div className="flex items-center justify-between 
-                    w-full h-[10em] my-2 mb-3
-                    z-20
-                    ">
-                      <div
-                        style={{
-                          backgroundImage: `url(${arrowKeyImageUrl})`,
-                          transform: "scaleX(-1)",
-                          backgroundSize: "100% 118%",
-                          backgroundPosition: "0% 0%",
-                          backgroundRepeat: "no-repeat", 
-                        }}
-                        className="text-arrow-colour-grey w-full h-full
-                        hover:cursor-pointer
-                        "
-                      />
-
-                      <GiPlasticDuck className="border-4 border-blue-300/80
-                      rounded-2xl 
-                      bg-logo-background-dark-grey w-full h-full" />
-                      
-                      <div
-                        style={{ 
-                        backgroundImage: `url(${arrowKeyImageUrl})`,
-                        backgroundSize: "100% 118%",
-                        backgroundPosition: "0% 0%",
-                        backgroundRepeat: "no-repeat"
-                      }}
-                        className="text-arrow-colour-grey w-full h-full
-                        hover:cursor-pointer
-                        "
-                      ></div>
-                    </div>
+                    {/* PFP */}
+                    <CarouselPFP  />
                     
 
                     {/* Registration Div */}
@@ -136,13 +116,17 @@ export const Home = () => {
                         border-2 border-dark-gray-200 text-3xl"
                         placeholder="Register Name"
                         maxLength={31}
+                        value={nameValue}
+                        onChange={handleNameTypingInput}
                       />
 
                       <button className="text-white bg-yellow-500
                       flex-grow flex items-center justify-center
                       py-3 px-4 rounded-lg font-semibold text-2xl
                       hover:bg-yellow-700
-                      ">
+                      "
+                      onClick={registerName}
+                      >
                         Register Name
                       </button>
 
