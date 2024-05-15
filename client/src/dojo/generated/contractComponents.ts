@@ -2,44 +2,74 @@
 
 import { defineComponent, Type as RecsType, World } from "@dojoengine/recs";
 
-export type ContractComponents = Awaited<
-    ReturnType<typeof defineContractComponents>
->;
+export type ContractComponents = Awaited<ReturnType<typeof defineContractComponents>>;
 
 export function defineContractComponents(world: World) {
-    return {
-        Moves: (() => {
-            return defineComponent(
-                world,
-                {
-                    player: RecsType.BigInt,
-                    remaining: RecsType.Number,
-                    last_direction: RecsType.String,
-                },
-                {
-                    metadata: {
-                        name: "Moves",
-                        types: ["contractaddress", "u8", "enum"],
-                        customTypes: ["Direction"],
-                    },
-                }
-            );
-        })(),
-        Position: (() => {
-            return defineComponent(
-                world,
-                {
-                    player: RecsType.BigInt,
-                    vec: { x: RecsType.Number, y: RecsType.Number },
-                },
-                {
-                    metadata: {
-                        name: "Position",
-                        types: ["contractaddress", "u32", "u32"],
-                        customTypes: ["Vec2"],
-                    },
-                }
-            );
-        })(),
-    };
+  return {
+    Game: (() => {
+      return defineComponent(
+        world,
+        { game_id: RecsType.BigInt, player_1: RecsType.BigInt, player_1_pos: { x: RecsType.Number, y: RecsType.Number }, player_2: RecsType.BigInt, player_2_pos: { x: RecsType.Number, y: RecsType.Number }, player_3: RecsType.BigInt, player_3_pos: { x: RecsType.Number, y: RecsType.Number }, player_4: RecsType.BigInt, player_4_pos: { x: RecsType.Number, y: RecsType.Number }, player_5: RecsType.BigInt, player_5_pos: { x: RecsType.Number, y: RecsType.Number }, player_6: RecsType.BigInt, player_6_pos: { x: RecsType.Number, y: RecsType.Number }, game_status: RecsType.Number, winner: RecsType.BigInt, winner_slot: RecsType.Number, timestamp_start: RecsType.BigInt, timestamp_end: RecsType.BigInt },
+        {
+          metadata: {
+            name: "Game",
+            types: ["u128","contractaddress","u32","u32","contractaddress","u32","u32","contractaddress","u32","u32","contractaddress","u32","u32","contractaddress","u32","u32","contractaddress","u32","u32","enum","contractaddress","u8","u64","u64"],
+            customTypes: ["Vec2","Vec2","Vec2","Vec2","Vec2","Vec2","GameStatus"],
+          },
+        }
+      );
+    })(),
+    Moves: (() => {
+      return defineComponent(
+        world,
+        { player: RecsType.BigInt, remaining: RecsType.Number, last_direction: RecsType.Number },
+        {
+          metadata: {
+            name: "Moves",
+            types: ["contractaddress","u8","enum"],
+            customTypes: ["Direction"],
+          },
+        }
+      );
+    })(),
+    Drone: (() => {
+      return defineComponent(
+        world,
+        { player_id: RecsType.BigInt, game_id: RecsType.BigInt, hero: RecsType.Number, health: RecsType.Number, drone_status: RecsType.Number },
+        {
+          metadata: {
+            name: "Drone",
+            types: ["contractaddress","u128","u16","u16","enum"],
+            customTypes: ["DroneStatus"],
+          },
+        }
+      );
+    })(),
+    Player: (() => {
+      return defineComponent(
+        world,
+        { player_id: RecsType.BigInt, game_id: RecsType.BigInt, name: RecsType.BigInt, profile_pic: RecsType.Number, total_games: RecsType.Number, total_wins: RecsType.Number, total_losses: RecsType.Number, ranking: RecsType.BigInt, timestamp: RecsType.BigInt },
+        {
+          metadata: {
+            name: "Player",
+            types: ["contractaddress","u128","felt252","u16","u16","u16","u16","u256","u64"],
+            customTypes: [],
+          },
+        }
+      );
+    })(),
+    Position: (() => {
+      return defineComponent(
+        world,
+        { player: RecsType.BigInt, vec: { x: RecsType.Number, y: RecsType.Number } },
+        {
+          metadata: {
+            name: "Position",
+            types: ["contractaddress","u32","u32"],
+            customTypes: ["Vec2"],
+          },
+        }
+      );
+    })(),
+  };
 }

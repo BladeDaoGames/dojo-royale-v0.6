@@ -41,7 +41,57 @@ export async function setupWorld(provider: DojoProvider) {
         };
         return { spawn, move };
     }
+
+    function lobby() {
+        const contract_name = "lobby";
+
+        const register_player = async ({
+            account,
+            name,
+            profile_pic,
+          }: {
+            account: AccountInterface;
+            name: string;
+            profile_pic: number;
+          }) => {
+            try {
+              return await provider.execute(
+                account,
+                contract_name,
+                "register_player",
+                [name, profile_pic]
+              );
+            } catch (error) {
+              console.error("Error executing register_player:", error);
+              throw error;
+            }
+          };
+      
+          const set_profile_pic = async ({
+            account,
+            profile_pic,
+          }: {
+            account: AccountInterface;
+            profile_pic: number;
+          }) => {
+            try {
+              return await provider.execute(
+                account,
+                contract_name,
+                "set_profile_pic",
+                [profile_pic]
+              );
+            } catch (error) {
+              console.error("Error executing set_profile_pic:", error);
+              throw error;
+            }
+          };
+
+          return { register_player, set_profile_pic };
+    }
+
     return {
-        actions: actions(),
+        //actions: actions(),
+        lobby: lobby(),
     };
 }
