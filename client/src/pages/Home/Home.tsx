@@ -30,7 +30,7 @@ import { useComponentValue } from "@dojoengine/react";
 import { Entity } from "@dojoengine/recs";
 import { set } from 'mobx';
 
-import { toast, Toaster } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -373,24 +373,6 @@ export const Home = () => {
                   </div>
                 )}
           </div>
-          <Toaster position="top-center" toastOptions={{
-            success:{
-              style:{
-                background: "#FEE9D7",
-                color: "#34222E",
-                border: "2px solid #53C576",
-                borderRadius: "0.375rem",
-              }
-            },
-            error:{
-              style:{
-                background: "#FEE9D7",
-                color: "#34222E",
-                border: "2px solid #C33030",
-                borderRadius: "0.375rem",
-              }
-            }
-          }}/>
     </BasePage>
   )
 }
