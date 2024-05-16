@@ -48,3 +48,11 @@ export const pfpCardImageUrl = [
 // LOBBY
 
 export const waitingRoomCardImageUrl = "/images/waiting-room/waiting_room_card.png";
+export const waitstatusCardImageUrl = "/images/waiting-room/waitstatus.png";
+// tabs
+export const roomCardImageUrl = "/images/waiting-room/room_card.png";
+export const ethIconImageUrl = "/images/shared/eth_icon.png";
+export const profileIconImageUrl = "/images/shared/profile_icon.png";
+export const cardDetailLineDivisorImageUrl ="/images/waiting-room/card_detail_divisor.png";
+export const smallJoinButtonContainerImageUrl ="/images/waiting-room/small_join_button_container.png";
+export const smallPlayingButtonContainerImageUrl ="/images/waiting-room/small_playing_button_container.png";
