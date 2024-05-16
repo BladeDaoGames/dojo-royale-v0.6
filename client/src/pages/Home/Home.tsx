@@ -30,6 +30,8 @@ import { useComponentValue } from "@dojoengine/react";
 import { Entity } from "@dojoengine/recs";
 import { set } from 'mobx';
 
+import { toast, Toaster } from 'react-hot-toast';
+
 export const Home = () => {
   const navigate = useNavigate();
   const title = "LOOT ROYALE".split("");
@@ -94,8 +96,9 @@ export const Home = () => {
   const player = useComponentValue(Player, entityId);
   const [ playerRegistered, setPlayerRegistered ] = useState(false);
   
+  // use to check if there is existing registered player
   useEffect(() => {
-    if (!player) {
+    if (!player || account?.count<0) {
       pfpCarouselApi?.scrollTo(0);
       setNameValue("");
       setPlayerRegistered(false);
@@ -114,7 +117,7 @@ export const Home = () => {
     if(!pfpCarouselApi) return;
     pfpCarouselApi?.scrollTo(player?.profile_pic)
 
-  }, [player, pfpCarouselApi]);
+  }, [player, pfpCarouselApi, account]);
 
   const registerName = () => {
     console.log("registering: ", nameValue);
@@ -264,7 +267,13 @@ export const Home = () => {
                         backgroundPosition: "50% 50%",
                         backgroundRepeat: "no-repeat", }}
 
-                        onClick={()=>navigate(ROUTES.waiting)}
+                        onClick={()=>{
+                          if (!playerRegistered) {
+                            toast.error("Please register your Player Name first")
+                            return;
+                          }
+                          navigate(ROUTES.waiting)
+                        }}
                         className="shadow-lg
                         flex justify-center items-center 
                         w-[3em] rounded-lg overflow-hidden
@@ -364,6 +373,24 @@ export const Home = () => {
                   </div>
                 )}
           </div>
+          <Toaster position="top-center" toastOptions={{
+            success:{
+              style:{
+                background: "#FEE9D7",
+                color: "#34222E",
+                border: "2px solid #53C576",
+                borderRadius: "0.375rem",
+              }
+            },
+            error:{
+              style:{
+                background: "#FEE9D7",
+                color: "#34222E",
+                border: "2px solid #C33030",
+                borderRadius: "0.375rem",
+              }
+            }
+          }}/>
     </BasePage>
   )
 }
