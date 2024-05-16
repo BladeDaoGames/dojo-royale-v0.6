@@ -44,3 +44,7 @@ export const pfpCardImageUrl = [
     "./characters/profile/pilots/pilot18.png",
     "./characters/profile/pilots/pilot19.png",
 ];
+
+// LOBBY
+
+export const waitingRoomCardImageUrl = "/images/waiting-room/waiting_room_card.png";
