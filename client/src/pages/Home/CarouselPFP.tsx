@@ -12,7 +12,7 @@ import { type CarouselApi } from "@/components/ui/carousel";
 
 import { arrowKeyImageUrl, pfpCardImageUrl } from '@/constants/assetPaths';
 
-import { usePfpStore } from '@/store/pfpStore';
+import { usePfpStore } from '@/store';
 
 
 export const CarouselPFP = () => {

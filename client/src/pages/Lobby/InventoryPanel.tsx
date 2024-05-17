@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BsExclamationCircleFill } from "react-icons/bs";
 import { inventoryBoxImageUrl, inventoryCardImageUrl, 
     selectedInventoryBoxImageUrl } from "@/constants/assetPaths";
-import { CharacterCarousel } from "./Carousel";
+import { DroneCarousel } from "./Carousel";
 
 export const InventoryPanel = () => {
   
@@ -68,7 +68,7 @@ export const InventoryPanel = () => {
             }}
           />
         </Carousel> */}
-        <CharacterCarousel />
+        <DroneCarousel />
       </div>
     
     {/* Inventory Boxes */}

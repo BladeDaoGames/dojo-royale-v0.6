@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -8,12 +8,30 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+
+import { useDroneStore } from '@/store';
+
 import { characterCardImageUrl } from "@/constants/assetPaths";
 
 
-export const CharacterCarousel = () => {
-  return (
-        <Carousel className="w-full">
+export const DroneCarousel = () => {
+
+    const { droneCarouselApi, setDroneCarouselApi } = useDroneStore();
+
+    useEffect(() => {
+        if (!droneCarouselApi) {
+          return
+        }
+     
+        droneCarouselApi.on("select", () => {
+          // Do something on select.
+          console.log("Selected Pilot:", droneCarouselApi.selectedScrollSnap())
+        })
+      }
+    , [droneCarouselApi])
+
+    return (
+        <Carousel className="w-full" setApi={setDroneCarouselApi}>
             <CarouselContent className="">
                 {Object.keys(characterCardImageUrl).map((k)=>characterCardImageUrl[k]).map((_, index) => (
                     <CarouselItem key={index} className="flex justify-center">
