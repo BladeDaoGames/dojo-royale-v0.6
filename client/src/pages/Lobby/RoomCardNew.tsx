@@ -5,6 +5,8 @@ import { roomCardImageUrl, ethIconImageUrl,
  } from "@/constants/assetPaths";
  import { FaEthereum, FaUser } from "react-icons/fa";
 
+import { Link } from "react-router-dom";
+import { ROUTES } from "@/constants/routing/routePath";
 
 interface RoomCardProps {
   roomId: string;
@@ -88,7 +90,7 @@ export const RoomCardNew = ({
 
       </div>
       
-        <button
+        <Link
           className="w-[6em] sm:w-[3.5em] flex justify-center items-center py-1 px-4 sm:text-sm text-2xl text-white font-bold
           absolute bottom-0 right-0 mb-2.5 mr-5
           "
@@ -98,9 +100,10 @@ export const RoomCardNew = ({
             backgroundPosition: "50% -2%",
             backgroundRepeat: "no-repeat",
           }}
+          to={`${ROUTES.inGame}/${roomId}`}
         >
             {roomJoinable ? "Join" : "Spectate"}
-        </button>
+        </Link>
     </div>
   );
 };
