@@ -56,3 +56,8 @@ export const profileIconImageUrl = "/images/shared/profile_icon.png";
 export const cardDetailLineDivisorImageUrl ="/images/waiting-room/card_detail_divisor.png";
 export const smallJoinButtonContainerImageUrl ="/images/waiting-room/small_join_button_container.png";
 export const smallPlayingButtonContainerImageUrl ="/images/waiting-room/small_playing_button_container.png";
+
+// Lobby Modal
+export const modalCardContainerImageUrl ="/images/waiting-room/modal_popup_card.png";
+export const buttonContainerImageUrl = "/images/shared/button_card.png";
+export const dropdownImageUrl = "/images/dropdown_arrow.png";
