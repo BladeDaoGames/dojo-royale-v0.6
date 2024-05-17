@@ -28,15 +28,14 @@ export class Search extends React.Component<SearchProps, SearchState> {
     return (
       <form className="search-container
         flex items-center justify-center
-        ml-2 mr-auto bg-white rounded-md
+        ml-4 mr-auto bg-white rounded-lg
         px-2
-        border border-green-700
       " 
       onSubmit={this.handleSubmit}>
         <input
           type="text"
           placeholder="Search room by owner or room id"
-          className="w-[20em] search-input rounded-md text-xl py-1 px-2
+          className="w-[20em] search-input rounded-md text-lg py-1 px-2
           focus:outline-none
           "
           value={this.state.searchQuery}

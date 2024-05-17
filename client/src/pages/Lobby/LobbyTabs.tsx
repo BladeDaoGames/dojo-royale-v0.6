@@ -9,15 +9,15 @@ export const LobbyTabs = () => {
   };
 
   return (
-    <div className="border border-green-700 h-full flex flex-col">
-      <Tabs defaultValue="account" className="w-full flex-grow
+    <div className="h-full flex flex-col">
+      <Tabs defaultValue="available" className="w-full h-full
       flex flex-col justify-start items-center
-      border-2 border-purple-500">
+      
+      ">
 
 
         <TabsList className="w-full flex
-          bg-transparent px-0 rounded-t-xl overflow-hidden
-          border-2 border-pink-500
+          bg-transparent px-0 py-4 rounded-t-xl overflow-hidden
           ">
           <Search onSearch={handleSearch} />
           <TabsTrigger className="text-xl font-bold text-white/50 rounded-t-xl" value="available">Available</TabsTrigger>
@@ -29,10 +29,9 @@ export const LobbyTabs = () => {
         <TabsContent className="p-4 overflow-y-auto 
         w-full flex-grow
         grid grid-cols-2 grid-flow-row gap-x-3 gap-y-2 justify-start items-start
-        border border-yellow-400
         " value="available">
           {
-            Array.from({ length: 10 }).map((_, index) => (
+            Array.from({ length: 12 }).map((_, index) => (
                 <RoomCardNew
                     roomId={"001"}
                     creatorName={"Musashi"}

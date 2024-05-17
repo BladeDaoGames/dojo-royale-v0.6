@@ -4,7 +4,7 @@ import { Toaster } from 'react-hot-toast';
 
 export const BasePage: React.FC<{ children: ReactNode; className?: string }> = ({children, className}) => {
   return (
-    <div className={`min-h-screen flex flex-col items-center justify-start ${className}`.trim()} 
+    <div className={`min-h-screen h-screen flex flex-col items-center justify-start ${className}`.trim()} 
     style={{
         backgroundImage: `url(${baseBackgroundImageUrl})`,
         backgroundSize: "cover",
