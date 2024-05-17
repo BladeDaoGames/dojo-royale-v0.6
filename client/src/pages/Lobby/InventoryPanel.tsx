@@ -12,7 +12,7 @@ export const InventoryPanel = () => {
     <div
       className="
         h-full 
-        flex flex-col justify-center items-center
+        flex flex-col justify-start items-center
         text-white
         py-2
         "
@@ -72,27 +72,31 @@ export const InventoryPanel = () => {
       </div>
     
     {/* Inventory Boxes */}
-      <div className="">
+      <div className="w-full 
+      flex flex-col justify-start items-center
+      px-2
+      overflow-hidden
+      ">
         <p
-          className="text-2xl my-2 w-full
+          className="text-2xl sm:text-base my-2 w-full
         mx-2 px-2 font-medium text-white
+        flex justify-start items-center
         "
         >
           INVENTORY
         </p>
 
         <div
-          className="grid grid-cols-4 gap-2
-                justify-items-center justify-center items-center
-                w-96 h-96
-                "
+          className="grid grid-cols-4 gap-1
+          w-full overflow-y-auto
+          justify-center items-center"
         >
           {
             //render div below 16 times with a loop
             Array.from({ length: 16 }).map((_, index) => (
               <div
                 key={index}
-                className="relative w-[92px] h-[92px] 
+                className="w-full aspect-square
                     rounded-lg
                     cursor-pointer
                     hover:border-2 hover:border-cyan-500

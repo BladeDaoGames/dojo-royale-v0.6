@@ -20,20 +20,21 @@ export const Lobby = () => {
         
         {/* Content */}
         <div className="
-        w-full border border-purple-500 
-        h-full overflow-y-scroll
-        flex justify-start gap-4 
+        w-full
+        h-full overflow-y-auto
+        flex justify-start items-start gap-4 
         my-2 mx-4 p-2 px-4
         ">
 
             {/* Inventory */}
-          <div className="w-1/3">
+          <div className="w-1/3 h-full overflow-hidden">
             <InventoryPanel/>
           </div>
 
           {/* Lobby Tabs */}
           <div
-            className="w-full h-full flex flex-col px-4 mt-2"
+            className="w-full h-full flex flex-col px-4
+            "
             style={{
               backgroundImage: `url(${waitingRoomCardImageUrl})`,
               backgroundSize: "100% 100%",

@@ -44,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBackClick, getHomePage }) => {
     <div className="w-full relative z-50 rounded-b-lg overflow-hidden">
       {showSettings && <SettingsPopup onClose={toggleSettings} />}
       <div
-        className="w-full h-[7em] flex justify-between items-center gap-10 py-4"
+        className="w-full h-[7em] sm:h-[4em] flex justify-between items-center gap-10 py-4"
         style={{
           backgroundImage: `url(${backgroundImageUrl})`,
           backgroundSize: "cover",
@@ -86,7 +86,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onBackClick, getHomePage }) => {
               }}
             >
               <motion.div whileHover={ButtonHoverAnimation}>
-                <div className=" text-4xl 3xl:text-5xl text-white cursor-pointer text-center ml-6 font-extrabold">
+                <div className=" text-4xl sm:text-2xl text-white cursor-pointer 
+                flex justify-start items-center
+                ml-6 font-bold">
                   LOOT ROYALE
                 </div>
               </motion.div>
@@ -95,7 +97,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBackClick, getHomePage }) => {
             <div className="text-white flex gap-5 ml-auto">
               {account.account.address ? (
                 <button
-                  className="text-3xl 3xl:text-4xl"
+                  className="text-3xl sm:text-2xl"
                   onClick={()=>{}}
                 >
                   {formatAddress(account.account.address)}

@@ -31,8 +31,8 @@ export const CharacterCarousel = () => {
                     </CarouselItem>
                 ))} 
             </CarouselContent>
-            <CarouselPrevious className="left-20 bg-blue-300/30 cursor-pointer"/>
-            <CarouselNext className="right-20 bg-blue-300/30 cursor-pointer"/>
+            <CarouselPrevious className="left-20 sm:left-10 bg-blue-300/30 cursor-pointer"/>
+            <CarouselNext className="right-20 sm:right-10 bg-blue-300/30 cursor-pointer"/>
         </Carousel>
   )
 }
