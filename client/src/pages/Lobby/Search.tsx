@@ -28,20 +28,20 @@ export class Search extends React.Component<SearchProps, SearchState> {
     return (
       <form className="search-container
         flex items-center justify-center
-        ml-4 mr-auto bg-white rounded-lg
-        px-2
+        ml-4 mr-auto bg-white/50 rounded-lg rounded-tl-2xl
+        px-2 mb-3 focus:outline-teal-500/50
       " 
       onSubmit={this.handleSubmit}>
         <input
           type="text"
           placeholder="Search room by owner or room id"
           className="w-[20em] search-input rounded-md text-lg py-1 px-2
-          focus:outline-none
+          bg-transparent placeholder:text-gray-700 text-teal-300 font-semibold focus:outline-none
           "
           value={this.state.searchQuery}
           onChange={this.handleInputChange}
         />
-        <BiSearchAlt className="search-icon mx-2 text-xl font-bold text-gray-800" />
+        <BiSearchAlt className="search-icon mx-2 text-xl font-bold text-gray-700" />
         <button type="submit" style={{ display: "none" }}>
           Search
         </button>

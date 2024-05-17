@@ -25,17 +25,26 @@ export const LobbyTabs = () => {
     <div className="h-full w-full flex flex-col">
     <Tabs defaultValue="available" 
       className="w-full h-full overflow-y-hidden
-      flex flex-col justify-start items-center
+      flex flex-col justify-start items-center rounded-lg rounded-t-3xl
+      pt-4
+      border border-teal-500/50
       ">
 
 
-        <TabsList className="w-full flex
-          bg-transparent px-0 py-4 rounded-t-xl overflow-hidden
+        <TabsList className="w-full flex items-center
+          bg-transparent rounded-t-xl
+          border-b border-teal-500/50 rounded-b-none
           ">
           <Search onSearch={handleSearch} />
-          <TabsTrigger className="text-xl font-bold text-white/50 rounded-t-xl" value="available">Available</TabsTrigger>
-          <TabsTrigger className="text-xl font-bold text-white/50 rounded-t-xl" value="playing">Playing</TabsTrigger>
-          <TabsTrigger className="text-xl font-bold text-white/50 rounded-t-xl" value="all">ALL</TabsTrigger>
+          <TabsTrigger className="text-xl font-bold text-white/50 rounded-t-xl rounded-b-none
+          data-[state=active]:bg-gradient-to-l from-cyan-500 to-teal-500
+          " value="available">Available</TabsTrigger>
+          <TabsTrigger className="text-xl font-bold text-white/50 rounded-t-xl rounded-b-none
+          data-[state=active]:bg-gradient-to-l from-cyan-500 to-teal-500
+          " value="playing">Playing</TabsTrigger>
+          <TabsTrigger className="text-xl font-bold text-white/50 rounded-t-xl rounded-b-none 
+          data-[state=active]:bg-gradient-to-l from-cyan-500 to-teal-500
+          " value="all">ALL</TabsTrigger>
         </TabsList>
 
 
@@ -44,7 +53,7 @@ export const LobbyTabs = () => {
         grid grid-cols-2 grid-flow-row gap-x-3 gap-y-2 justify-start items-start
         " value="available">
           {
-            Array.from({ length: 12 }).map((_, index) => (
+            Array.from({ length: 14 }).map((_, index) => (
                 <RoomCardNew
                     roomId={"001"}
                     creatorName={"Musashi"}
@@ -64,7 +73,7 @@ export const LobbyTabs = () => {
 
       {/* Create Room Buttons */}
       <Dialog>
-        <div className="flex items-center justify-end gap-3 my-2 ml-auto px-4">
+        <div className="flex items-center justify-end gap-3 my-2 mt-4 ml-auto px-4">
           <DialogTrigger
             className="text-3xl sm:text-2xl text-white
             py-2 px-8

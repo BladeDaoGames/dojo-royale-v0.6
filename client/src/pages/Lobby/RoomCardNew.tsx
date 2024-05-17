@@ -31,7 +31,7 @@ export const RoomCardNew = ({
       bg-gray-700/50 rounded-md
       flex justify-start items-center
       px-2
-      border border-sky-400
+      border border-teal-500/50
       relative
       "
     >
