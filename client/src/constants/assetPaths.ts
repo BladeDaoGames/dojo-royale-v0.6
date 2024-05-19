@@ -61,3 +61,12 @@ export const smallPlayingButtonContainerImageUrl ="/images/waiting-room/small_pl
 export const modalCardContainerImageUrl ="/images/waiting-room/modal_popup_card.png";
 export const buttonContainerImageUrl = "/images/shared/button_card.png";
 export const dropdownImageUrl = "/images/dropdown_arrow.png";
+
+// IN GAME
+export const gameInfoPanelImageUrl = "/images/in-game/game_info.png";
+export const quitButtonContainerImageUrl = "/images/shared/button_container.png";
+export const pauseButtonImageUrl = "/images/in-game/pause_button.png";
+export const quitButtonImageUrl = "/images/shared/quit_button.png";
+export const playerInfoContainerImageUrl ="/images/ready-room/player_info_container.png";
+export const progressBarContainerImageUrl ="/images/in-game/progess_bar_container.png";
+export const progressBarImageUrl = "/images/in-game/progress_bar.png";
