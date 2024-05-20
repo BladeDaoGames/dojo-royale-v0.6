@@ -10,7 +10,7 @@ import {
 import { useMapSelectStore } from '@/store';
 
 import { cn } from "@/lib/utils"
-import { defaultMapImageUrl, arrowKeyImageUrl } from '@/constants/assetPaths';
+import { defaultMapImageUrl, arrowKeyImageUrl, mapsImageUrlarray } from '@/constants/assetPaths';
 
 
 interface MapSelectCarouselItemProps {
@@ -24,18 +24,18 @@ const MapSelectCarouselItem: React.FC<MapSelectCarouselItemProps> = ({
         className, title, children, ...props}) =>{
     return (
         <CarouselItem className={cn(`aspect-square flex flex-col justify-start items-center
-        
+        px-10
         `,
             className)} {...props}
 
                     style={{
                         backgroundImage: `url(${defaultMapImageUrl})`,
                         backgroundSize: "104% 104%",
-                        backgroundPosition: "0% -75%",
+                        backgroundPosition: "40% -75%",
                         backgroundRepeat: "no-repeat",
                     }}>
                         <div className="w-full flex justify-center items-center
-                        text-sky-300 text-2xl font-normal my-2
+                        text-sky-300 text-2xl font-normal my-2 mb-4
                         ">
                             {title}
                         </div>
@@ -83,11 +83,19 @@ export const MapSelectionCarousel = () => {
                 <CarouselContent className="
                 
                 ">
-                    <MapSelectCarouselItem key={0} 
-                    title="Dune Valley (12x12)"
-                    className="aspect-square">
-                        
-                    </MapSelectCarouselItem>
+                    {
+                        mapsImageUrlarray.map((imageUrl, index) => (
+                            <MapSelectCarouselItem key={index} 
+                                title={imageUrl.title}
+                                className="aspect-square">
+                                    
+                            <img src={imageUrl.url} alt={imageUrl.title} 
+                                className="w-full aspect-square"
+                            />
+                            </MapSelectCarouselItem>
+                        ))
+                    }
+                    
                     <MapSelectCarouselItem key={1} className="aspect-square">
                         
                     </MapSelectCarouselItem>

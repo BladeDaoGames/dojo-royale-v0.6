@@ -78,6 +78,6 @@ export const singlePlayerContainerImageUrl = "/images/ready-room/single_player_c
 export const defaultMapImageUrl = "/images/ready-room/default_map.png";
 export const mapSelectionTextContainerImageUrl ="/images/ready-room/map_selection_text_container.png";
 
-export const mapsImageUrl = [
+export const mapsImageUrlarray = [
     {title: "Dunes Valley (12x12)", url: "/phaser/maps/dunes.png"},
 ]
