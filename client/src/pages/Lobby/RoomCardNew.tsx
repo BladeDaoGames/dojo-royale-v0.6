@@ -56,7 +56,7 @@ export const RoomCardNew = ({
         <div className="flex flex-nowrap items-center justify-start py-1
         
         ">
-          <FaEthereum className="text-violet-950"/>
+          <FaEthereum className="text-violet-300"/>
           <span className="ml-auto font-semibold flex justify-end mr-2">
             {stakeValue}
           </span>

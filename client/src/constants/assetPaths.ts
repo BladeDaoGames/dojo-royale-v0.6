@@ -70,3 +70,10 @@ export const quitButtonImageUrl = "/images/shared/quit_button.png";
 export const playerInfoContainerImageUrl ="/images/ready-room/player_info_container.png";
 export const progressBarContainerImageUrl ="/images/in-game/progess_bar_container.png";
 export const progressBarImageUrl = "/images/in-game/progress_bar.png";
+
+// PLAYER STATUS
+export const singlePlayerContainerImageUrl = "/images/ready-room/single_player_container.png";
+
+// MAP SELECTION
+export const defaultMapImageUrl = "/images/ready-room/default_map.png";
+export const mapSelectionTextContainerImageUrl ="/images/ready-room/map_selection_text_container.png";
