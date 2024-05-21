@@ -23,9 +23,9 @@ export const InGame = () => {
       
           {/* Content */}
           <div className="
-          w-full h-full border
-          flex justify-center items-center
-          my-2 mx-4 p-2 px-4
+          w-full h-full
+          flex justify-center items-start
+          mx-4 p-2 px-4
           ">
           
             {/* Game Status */}
@@ -76,25 +76,21 @@ export const InGame = () => {
               <PlayerGameStatus />
 
               {/* <Chat/> 20em*/}
-              {/* <div className="
-              mx-2 w-fit max-h-[15em] min-h-[10em] h-full
-              flex flex-col justify-end items-start mt-auto
-              overflow-hidden
+              
+              <div className="max-w-[20em] w-full
+                max-h-[15em] min-h-[10em] h-[15em]
+                border border-sky-300/80 mb-2 mt-auto
+                rounded-lg rounded-b-xl overflow-hidden
               ">
-
-                <div className="w-[20em] h-full
-                border border-sky-300/80 my-2
-                rounded-lg  rounded-b-xl overflow-hidden">
-                  <Chat />
-                </div>
-
-              </div> */}
+                <Chat />
+              </div>
 
             </div>
 
             {/* Game and Map */}
             <div
-              className="w-[700px] h-full
+              className="w-[700px] h-full flex flex-col
+              justify-start items-center 
               "
             >
               <MapSelectionCarousel />
@@ -115,7 +111,7 @@ export const InGame = () => {
                 </div>
               
               {/* Join Game Buttons */}
-              {/* <div className="w-full flex justify-center items-center
+              <div className="w-full flex justify-center items-center
               py-2
               ">
                 <button className="mx-2 py-4 px-8
@@ -151,7 +147,7 @@ export const InGame = () => {
                 }}
                 >Start Game</button>
               
-              </div> */}
+              </div>
 
             </div>
 

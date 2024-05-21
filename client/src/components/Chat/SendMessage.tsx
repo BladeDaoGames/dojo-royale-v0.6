@@ -36,8 +36,8 @@ export const SendMessage = () => {
   return (
     <form className="
           mt-auto
-          w-full h-[4em] rounded-xl
-          py-2 gap-x-2
+          w-full h-[2.5em] rounded-xl
+          py-1 gap-x-2
           flex justify-start items-center
           border border-sky-300
           "
@@ -55,11 +55,11 @@ export const SendMessage = () => {
             onChange={e => setValue(e.target.value)}
             />
 
-            <button className="h-full aspect-square mr-2
+            <button className="h-full aspect-square mr-1
             flex justify-center items-center rounded-lg
             text-sky-300
             hover:bg-sky-300/80 hover:text-black
-            border border-sky-300/80
+            border border-sky-300/80 px-2
             "
             type='submit'
             >

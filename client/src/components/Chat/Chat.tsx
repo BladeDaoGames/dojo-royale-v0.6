@@ -44,14 +44,21 @@ export const Chat: React.FC<ChatProps> = ({serverMessages=[]}) => {
         {id: 6, user: "player5", message: "hello"},
         {id: 7, user: "player6", message: "hi"},
         {id: 1, user: "me", message: "hello"},
+
+        {id: 1, user: "me", message: "hello"},
+        {id: 2, user: "player1", message: "hi"},
+        {id: 3, user: "player2", message: "yo"},
+        {id: 4, user: "player3", message: "hey"},
+        {id: 5, user: "player4", message: "sup"},
+        {id: 6, user: "player5", message: "hello"},
+        {id: 7, user: "player6", message: "hi"},
+        {id: 1, user: "me", message: "hello"},
       ])
     }else{
       setMessages(serverMessages)
     }
   }, [])
 
-  console.log(messages)
-  console.log(import.meta.env.DEVMODE)
   return (
     <div className="w-full h-full bg-black/50
     flex flex-col justify-start items-center
@@ -69,7 +76,7 @@ export const Chat: React.FC<ChatProps> = ({serverMessages=[]}) => {
         ))}
           <div ref={messagesEndRef}></div>
         </div>
-      
+
       {/* chat input */}
       <SendMessage/>
 

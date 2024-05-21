@@ -5,7 +5,7 @@ import { playerInfoContainerImageUrl } from '@/constants/assetPaths';
 export const PlayerGameStatus = () => {
   return (
     <div
-        className="w-[20em] min-h-[24em] h-full mx-2 my-2
+        className="max-w-[20em] w-full min-h-[24em] h-full my-2
         "
         style={{
         backgroundImage: `url(${playerInfoContainerImageUrl})`,
@@ -16,9 +16,11 @@ export const PlayerGameStatus = () => {
     >   
 
         {/* total staked bar */}
-        <div className="flex flex-nowrap justify-start items-center text-3xl p-2 pb-4 mb-2">
-        <p className="font-semibold text-sky-200 pt-2"> Total Staked</p>
-        <p className="flex justify-end ml-auto text-sky-200 px-4 pt-2 w-[3em]">80</p>
+        <div className="flex flex-nowrap justify-start items-center 
+          w-full
+          text-3xl p-2 pb-4 mb-2">
+          <p className="font-semibold text-sky-200 pt-2"> Total Staked</p>
+          <p className="flex justify-end ml-auto text-sky-200 px-4 pt-2 w-[3em]">80</p>
         </div>
         
         {/* player statuses */}

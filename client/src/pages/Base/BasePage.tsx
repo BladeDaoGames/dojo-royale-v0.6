@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 export const BasePage: React.FC<{ children: ReactNode; className?: string }> = ({children, className}) => {
   return (
     <div className={cn(
-      "min-h-screen h-screen flex flex-col items-center justify-start",
+      "min-h-screen h-full flex flex-col items-center justify-start",
       className)} 
     style={{
         backgroundImage: `url(${baseBackgroundImageUrl})`,

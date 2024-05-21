@@ -35,7 +35,7 @@ const MapSelectCarouselItem: React.FC<MapSelectCarouselItemProps> = ({
                         backgroundRepeat: "no-repeat",
                     }}>
                         <div className="w-full flex justify-center items-center
-                        text-sky-300 text-2xl font-normal my-2 mb-4
+                        text-sky-300 text-2xl font-normal mb-6
                         ">
                             {title}
                         </div>
@@ -62,7 +62,8 @@ export const MapSelectionCarousel = () => {
       }, [mapSelectCarouselApi])
 
     return (
-        <div className="flex items-center w-full px-16 py-8">
+        <div className="flex items-center w-full px-16
+        ">
 
             {/* Left Arrow */}
             <div
