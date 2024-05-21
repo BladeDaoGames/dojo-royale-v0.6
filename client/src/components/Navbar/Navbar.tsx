@@ -105,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBackClick, getHomePage }) => {
             
             {/* Wallet div, height based on sound icon 1em + configs */}
             <div className="flex items-center gap-x-2 py-2
-            text-white ml-auto h-full
+            text-white ml-auto
             ">
 
               {/* show address or create burner */}
@@ -132,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBackClick, getHomePage }) => {
               {/* settings icon/button */}
               <div
                 className="mr-4 cursor-pointer 
-                h-full aspect-square
+                min-h-[2.5em] h-full aspect-square
                 "
                 style={{
                   backgroundImage: `url(${settingIconImageUrl})`,
