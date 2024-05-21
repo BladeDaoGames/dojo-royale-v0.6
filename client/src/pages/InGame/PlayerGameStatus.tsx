@@ -5,14 +5,14 @@ import { playerInfoContainerImageUrl } from '@/constants/assetPaths';
 export const PlayerGameStatus = () => {
   return (
     <div
-        className="max-w-[20em] w-full min-h-[24em] h-full my-2
-        "
-        style={{
-        backgroundImage: `url(${playerInfoContainerImageUrl})`,
-        backgroundSize: "99% 100%",
-        backgroundPosition: "200% 0%",
-        backgroundRepeat: "no-repeat",
-        }}
+      className="max-w-[20em] w-full min-h-[24em] h-full my-2
+      "
+      style={{
+      backgroundImage: `url(${playerInfoContainerImageUrl})`,
+      backgroundSize: "99% 100%",
+      backgroundPosition: "200% 0%",
+      backgroundRepeat: "no-repeat",
+      }}
     >   
 
         {/* total staked bar */}
