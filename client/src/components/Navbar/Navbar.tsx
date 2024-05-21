@@ -41,87 +41,111 @@ export const Navbar: React.FC<NavbarProps> = ({ onBackClick, getHomePage }) => {
     setShowSettings(!showSettings);
   };
   return (
-    <div className="w-full relative z-50 rounded-b-lg overflow-hidden">
-      {showSettings && <SettingsPopup onClose={toggleSettings} />}
-      <div
-        className="w-full h-[7em] sm:h-[4em] flex justify-between items-center gap-10 py-4"
+    <div
+        className="w-full flex items-center 
+        rounded-b-lg
+        "
         style={{
           backgroundImage: `url(${backgroundImageUrl})`,
           backgroundSize: "cover",
+          backgroundPosition: "0% 0%",
           backgroundRepeat: "no-repeat",
         }}
       >
+        {/* settings popup */}
+        {/* {showSettings && <SettingsPopup onClose={toggleSettings} />} */}
+
+        {/* show logo only after login play homepage */}
         {getHomePage ? (
-          <div className="text-6xl text-white pr-10 flex ml-auto">
+          <>
+            {/* Sound Icon */}
             <motion.div
               whileHover={ButtonHoverAnimation}
               onClick={flipMuteState}
-            >
-              {getMutedState ? (
-                <div
-                  style={{
-                    backgroundImage: `url(${volumeMuteIconUrl})`,
-                  }}
-                  className="cursor-pointer bg-contain bg-no-repeat bg-center w-[56px] h-[56px] 2.5xl:w-[64px] 2.5xl:h-[64px] 3xl:w-[80px] 3xl:h-[80px]"
-                />
-              ) : (
-                <div
-                  style={{
-                    backgroundImage: `url(${volumeOnIconUrl})`,
-                  }}
-                  className="cursor-pointer bg-contain bg-no-repeat bg-center w-[56px] h-[56px] 2.5xl:w-[64px] 2.5xl:h-[64px] 3xl:w-[80px] 3xl:h-[80px]"
-                />
-              )}
-            </motion.div>
-          </div>
+
+              style={{
+                backgroundImage: `url(${getMutedState? volumeMuteIconUrl: volumeOnIconUrl})`,
+                backgroundSize: "100% 100%",
+                backgroundPosition: "center center",
+                backgroundRepeat: "no-repeat",
+              }}
+
+              className="
+              text-6xl text-white
+              h-[1em] aspect-square mx-8 my-2
+              cursor-pointer ml-auto
+              "
+              />
+          </>
+
         ) : (
           <>
+
+            {/* Logo */}
             <div
-              className="flex items-center gap-4 py-5 -mt-3 w-1/4"
+              className="flex items-center
+              h-full
+              "
               onClick={onBackClick}
               style={{
                 backgroundImage: `url(${titleBackgroundImageUrl})`,
-                backgroundSize: "cover",
+                backgroundSize: "100% 100%",
+                backgroundPosition: "0% 0%",
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <motion.div whileHover={ButtonHoverAnimation}>
-                <div className=" text-4xl sm:text-2xl text-white cursor-pointer 
-                flex justify-start items-center
-                ml-6 font-bold">
+              <motion.div whileHover={ButtonHoverAnimation}
+                className=" text-4xl sm:text-2xl text-white cursor-pointer 
+                flex justify-center items-center font-bold
+                px-8 py-2 mr-16
+                ">
                   LOOT ROYALE
-                </div>
               </motion.div>
             </div>
+            
+            {/* Wallet div, height based on sound icon 1em + configs */}
+            <div className="flex items-center gap-x-2 py-2
+            text-white ml-auto h-full
+            ">
 
-            <div className="text-white flex gap-5 ml-auto">
+              {/* show address or create burner */}
               {account.account.address ? (
+
+                // show address text
                 <button
-                  className="text-3xl sm:text-2xl"
+                  className="text-3xl sm:text-2xl px-4"
                   onClick={()=>{}}
                 >
                   {formatAddress(account.account.address)}
                 </button>
               ) : (
+
+                // show create burner button
                 <button
-                  className="text-3xl 3xl:text-4xl"
+                  className="text-3xl sm:text-2xl px-4"
                   onClick={()=>account?.create()}
                 >
                  {account?.isDeploying ? "deploying burner..." : "Create Burner"}
                 </button>
               )}
 
+              {/* settings icon/button */}
               <div
-                className="mr-4 w-[56px] h-[56px] 2.5xl:w-[64px] 2.5xl:h-[64px] 3xl:w-[80px] 3xl:h-[80px] bg-no-repeat bg-contain bg-center cursor-pointer"
+                className="mr-4 cursor-pointer 
+                h-full aspect-square
+                "
                 style={{
                   backgroundImage: `url(${settingIconImageUrl})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat",
                 }}
                 onClick={toggleSettings}
               />
             </div>
+
           </>
         )}
       </div>
-    </div>
   );
 };

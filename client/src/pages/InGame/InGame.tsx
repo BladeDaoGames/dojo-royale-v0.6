@@ -23,7 +23,7 @@ export const InGame = () => {
       
           {/* Content */}
           <div className="
-          w-full h-full
+          w-full h-full border
           flex justify-center items-center
           my-2 mx-4 p-2 px-4
           ">
@@ -76,7 +76,7 @@ export const InGame = () => {
               <PlayerGameStatus />
 
               {/* <Chat/> 20em*/}
-              <div className="
+              {/* <div className="
               mx-2 w-fit max-h-[15em] min-h-[10em] h-full
               flex flex-col justify-end items-start mt-auto
               overflow-hidden
@@ -88,7 +88,7 @@ export const InGame = () => {
                   <Chat />
                 </div>
 
-              </div>
+              </div> */}
 
             </div>
 
@@ -115,7 +115,7 @@ export const InGame = () => {
                 </div>
               
               {/* Join Game Buttons */}
-              <div className="w-full flex justify-center items-center
+              {/* <div className="w-full flex justify-center items-center
               py-2
               ">
                 <button className="mx-2 py-4 px-8
@@ -151,7 +151,7 @@ export const InGame = () => {
                 }}
                 >Start Game</button>
               
-              </div>
+              </div> */}
 
             </div>
 
