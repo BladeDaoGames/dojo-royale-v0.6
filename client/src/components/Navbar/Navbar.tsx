@@ -43,7 +43,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onBackClick, getHomePage }) => {
   return (
     <div
         className="w-full flex items-center 
-        rounded-b-lg
+        rounded-b-lg overflow-hidden
         "
         style={{
           backgroundImage: `url(${backgroundImageUrl})`,
