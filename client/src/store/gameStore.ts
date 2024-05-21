@@ -6,6 +6,6 @@ interface GameStoreState {
 }
 
 export const useGameStore = create<GameStoreState>((set) => ({
-    gameStarted: false,
+    gameStarted: true,
     setGameStarted: (value: boolean) => set({ gameStarted: value }),  // Correctly update state based on input
 }));
