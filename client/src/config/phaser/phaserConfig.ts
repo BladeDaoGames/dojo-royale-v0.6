@@ -8,13 +8,13 @@ export const phaserConfig = {
         antialias: false,
         transparent: true
     },
-    scale: {
-        width: 480,
-        height: 480,
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.Center.CENTER_BOTH,
-        zoom: 1
-    },
+    width: 480,
+    height: 480,
+    // scale: {
+    //     mode: Phaser.Scale.FIT,
+    //     autoCenter: Phaser.Scale.Center.CENTER_BOTH,
+    //     zoom: 1
+    // },
 
     physics: {
         default: 'arcade',

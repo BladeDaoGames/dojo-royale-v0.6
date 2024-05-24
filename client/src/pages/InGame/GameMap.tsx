@@ -92,11 +92,12 @@ export const GameMap = () => {
                         <TxnSender />
 
                         {/* phaserdiv */}
-                        <div className="w-fit pb-[50px]"
+                        <div className="px-[10px] pb-[50px]
+                        "
                             style={{
                                 backgroundImage: `url(/phaser/maps/dunes.png)`,
-                                backgroundSize: "100% 100%",
-                                backgroundPosition: "0% 0%",
+                                backgroundSize: "100% 102%",
+                                backgroundPosition: "0% -8%",
                                 backgroundRepeat: "no-repeat",
                             }}
                             >
@@ -106,6 +107,7 @@ export const GameMap = () => {
                             w-[480px] aspect-square
                             rounded-lg
                             overflow-hidden
+                            border border-green-700
                             " 
                             />
                         </div>

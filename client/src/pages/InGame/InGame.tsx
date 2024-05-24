@@ -9,7 +9,7 @@ import { GameStatusPanel, GameMap } from '.';
 
 export const InGame = () => {
     const navigate = useNavigate();
-
+    console.log("InGame.tsx");
     return (
       <BasePage className="text-white">
           <Navbar onBackClick={()=>navigate(ROUTES.home)} getHomePage={false}/>
