@@ -44,7 +44,7 @@ export class Scene extends Phaser.Scene{
         }
         // wall1 and wall3 looks the best. we pick wall1
 
-        this.load.atlas("straightC", "/phaser/sprites/sc1.png", "/phaser/sprites/sc1.json")
+        this.load.atlas("straightC", "/phaser/sprites/drones/sc1.png", "/phaser/sprites/drones/sc1.json")
     }
 
     create(){
