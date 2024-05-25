@@ -11,7 +11,9 @@ export class Player extends Character {
         frame: string | number,
         animKey: string,
         origin: {x: number, y: number} | undefined,
-        depth?: number
+        depth?: number,
+        scale?: number
+        shadowAlpha?: number
       }) {
         super(config);
     }

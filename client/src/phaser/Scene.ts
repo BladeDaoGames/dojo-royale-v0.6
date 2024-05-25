@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import { SceneKeys, AssetKeys, MovementKeys } from '@/config/phaser';
-import {Player, Controls, Direction } from '.'
+import {Player, Controls, Direction, PlayerWeb3Manager } from '.'
 import { createAnims } from './animations';
 
 export class Scene extends Phaser.Scene{
@@ -11,6 +11,7 @@ export class Scene extends Phaser.Scene{
     mapHeight: number;
     tileSize: number;
     #player: Player | undefined;
+    #playerGroup: PlayerWeb3Manager | undefined;
     _controls: Controls | undefined;
 
     constructor(){
@@ -87,11 +88,17 @@ export class Scene extends Phaser.Scene{
             }
         }
         //const player = this.add.sprite(tileSize*3/2, tileSize*(mapHeight-1)+(tileSize/2), "straightC").setOrigin(0.5, 0.5).setScale(0.8)
-        this.#player = new Player({
+        // this.#player = new Player({
+        //     scene:this, x:64+32, y:128+32, texture:"straightC", frame:"sc1(Down)0.png",
+        //     animKey: "sc", origin: {x:0.5, y:0.5},
+        // }).setScale(0.8)
+        //this.add.existing(player2);
+        this.#playerGroup = new PlayerWeb3Manager({
             scene:this, x:64+32, y:128+32, texture:"straightC", frame:"sc1(Down)0.png",
             animKey: "sc", origin: {x:0.5, y:0.5},
-        }).setScale(0.8)
-        //this.add.existing(player2);
+            scale: 0.8, shadowAlpha: 0.5
+        })
+        this.#player = this.#playerGroup.getPlayer();
 
         // Set the camera bounds to match the world bounds
         this.cameras.main.setBounds(0, 0, mapWidth * tileSize, mapHeight * tileSize);
@@ -112,8 +119,11 @@ export class Scene extends Phaser.Scene{
 
         if (selectedDirectionHeldDown !== Direction.NONE && !this._controls?.isInputLocked) {
             //console.log("moving player...")
-            this.#player?.moveCharacter(selectedDirectionHeldDown);
+            //this.#player?.moveCharacter(selectedDirectionHeldDown);
+            this.#playerGroup?.moveCharacter(selectedDirectionHeldDown);
         }
+        this.#playerGroup?.update();
+        
             // For panning camera using arrow keys
             // Check for arrow key presses and update camera position
             // if (this?.cursors?.left.isDown) {

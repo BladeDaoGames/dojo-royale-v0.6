@@ -25,11 +25,14 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
         frame: string | number,
         animKey: string,
         origin: {x: number, y: number} | undefined,
-        depth?: number
+        depth?: number,
+        scale?: number
+        shadowAlpha?: number
       }) 
     {
         super(config.scene, config.x, config.y, config.texture, config.frame);
         this.setDepth(config.depth ? config.depth : -1)
+        this.setScale(config.scale ? config.scale : 1)
         this.scene = config.scene;
         this.scene.add.existing(this);
         this._origin = config.origin ? { ...config.origin } : { x: 0.5, y: 0.5 };
