@@ -33,6 +33,16 @@ export class Scene extends Phaser.Scene{
             frameWidth: 64,
             frameHeight: 88
         })
+        // destructable wall
+        // load sprite walls from 1 to 10 using array loop
+        for (let i = 1; i <= 10; i++){
+            this.load.spritesheet(`wall${i}`, `/phaser/sprites/walls/wall${i}.png`, 
+            {
+                frameWidth: 64,
+                frameHeight: 80
+            })
+        }
+        // wall1 and wall3 looks the best. we pick wall1
 
         this.load.atlas("straightC", "/phaser/sprites/sc1.png", "/phaser/sprites/sc1.json")
     }
@@ -80,6 +90,11 @@ export class Scene extends Phaser.Scene{
         const pillar2 = this.add.sprite(
             tileSize*(mapWidth-0.5), 
             tileSize*mapHeight, "pillar").setOrigin(0.5, 1)
+
+
+        // add walls from 1 to 10
+        // with a loop
+        
         
 
         for (let i = 1; i < mapWidth; i+=2){
@@ -123,7 +138,7 @@ export class Scene extends Phaser.Scene{
             this.#playerGroup?.moveCharacter(selectedDirectionHeldDown);
         }
         this.#playerGroup?.update();
-        
+
             // For panning camera using arrow keys
             // Check for arrow key presses and update camera position
             // if (this?.cursors?.left.isDown) {
