@@ -10,6 +10,13 @@ mod models {
     mod position;
 }
 
+mod utils {
+    mod utils;
+    mod hash;
+    mod seed_gen;
+    mod timestamp;
+}
+
 mod types {
     mod events;
 }

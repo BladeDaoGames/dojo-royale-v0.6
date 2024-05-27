@@ -22,7 +22,7 @@ struct Drone {
     player_id: ContractAddress,
     #[key]
     game_id: u128,
-    hero: u16,
+    drone: u16,
     health: u16,
     drone_status: DroneStatus
 }

@@ -4,23 +4,37 @@ use starknet::ContractAddress;
 struct Game {
     #[key]
     game_id: u128,
-    player_1: ContractAddress,
-    player_1_pos: Vec2,
+    minstake: u256,
 
-    player_2: ContractAddress,
-    player_2_pos: Vec2,
+    player1: ContractAddress,
+    player1_stake: u256,
+    player1_ready: bool,
+    player1_pos: Vec2,
+
+    player2: ContractAddress,
+    player2_stake: u256,
+    player2_ready: bool,
+    player2_pos: Vec2,
     
-    player_3: ContractAddress,
-    player_3_pos: Vec2,
+    player3: ContractAddress,
+    player3_stake: u256,
+    player3_ready: bool,
+    player3_pos: Vec2,
 
-    player_4: ContractAddress,
-    player_4_pos: Vec2,
+    player4: ContractAddress,
+    player4_stake: u256,
+    player4_ready: bool,
+    player4_pos: Vec2,
 
-    player_5: ContractAddress,
-    player_5_pos: Vec2,
+    player5: ContractAddress,
+    player5_stake: u256,
+    player5_ready: bool,
+    player5_pos: Vec2,
 
-    player_6: ContractAddress,
-    player_6_pos: Vec2,
+    player6: ContractAddress,
+    player6_stake: u256,
+    player6_ready: bool,
+    player6_pos: Vec2,
 
     game_status: GameStatus,
     winner: ContractAddress,
@@ -31,10 +45,9 @@ struct Game {
 }
 
 
-#[derive(Copy, Drop, Serde, PartialEq, Introspect)]
+#[derive(Copy, Drop, Serde, Introspect)]
 enum GameStatus {
     Lobby,
-    Awaiting,
     InProgress,
     Ended
 }
