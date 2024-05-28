@@ -4,7 +4,12 @@ use starknet::ContractAddress;
 struct Game {
     #[key]
     game_id: u128,
+
+    map_id: u8,
     minstake: u256,
+    currentpot: u256,
+    playercount: u8,
+    maxplayers: u8,
 
     player1: ContractAddress,
     player1_stake: u256,
@@ -47,6 +52,7 @@ struct Game {
 
 #[derive(Copy, Drop, Serde, Introspect)]
 enum GameStatus {
+    Cancelled,
     Lobby,
     InProgress,
     Ended

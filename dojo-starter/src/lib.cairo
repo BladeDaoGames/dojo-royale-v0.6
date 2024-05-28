@@ -1,10 +1,12 @@
 mod systems {
     mod actions;
+    mod registrar;
     mod lobby;
 }
 
 mod models {
     mod player;
+    mod drone;
     mod game;
     mod moves;
     mod position;

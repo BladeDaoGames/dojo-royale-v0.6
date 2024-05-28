@@ -5,7 +5,9 @@ struct Player {
     #[key]
     player_id: ContractAddress,
     //------------------------
-    game_id: u128,
+    current_game_id: u128,
+    current_slot: u8,
+
     name: felt252,
     profile_pic: u16,
     total_games: u16,
@@ -22,8 +24,14 @@ struct Drone {
     player_id: ContractAddress,
     #[key]
     game_id: u128,
-    drone: u16,
+    drone_id: u8,
     health: u16,
+    atk: u8,
+    def: u8,
+    spd: u8, //1 for regular
+    range: u8,
+    artillery_range: u8,
+    bombs_remaining: u8,
     drone_status: DroneStatus
 }
 
