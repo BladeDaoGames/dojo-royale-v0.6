@@ -50,7 +50,7 @@ struct Game {
 }
 
 
-#[derive(Copy, Drop, Serde, Introspect)]
+#[derive(Copy, Drop, Serde, PartialEq, Introspect)]
 enum GameStatus {
     Cancelled,
     Lobby,

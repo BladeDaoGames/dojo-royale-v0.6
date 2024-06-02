@@ -2,12 +2,41 @@
 set -euo pipefail
 pushd $(dirname "$0")/..
 
-export RPC_URL="http://localhost:5050"
+if ! [ -x "$(command -v toml)" ]; then
+  echo 'Error: toml not instlaled! Instal with: cargo install toml-cli'
+  exit 1
+fi
 
-export WORLD_ADDRESS=$(cat ./manifests/dev/manifest.json | jq -r '.world.address')
+export TX_SLEEP=0.2
+
+export RPC_URL=$(toml get Scarb.toml --raw tool.dojo.env.rpc_url)
+export ACCOUNT_ADDRESS=$(toml get Scarb.toml --raw tool.dojo.env.account_address)
+export WORLD_ADDRESS=$(toml get Scarb.toml --raw tool.dojo.env.world_address)
+export ADMIN_ADDRESS=$(cat ./target/dev/manifest.json | jq -r '.contracts[] | select(.name == "dojo_starter::systems::admin::admin" ).address')
+export ACTIONS_ADDRESS=$(cat ./target/dev/manifest.json | jq -r '.contracts[] | select(.name == "dojo_starter::systems::actions::actions" ).address')
+
+export ADMIN_COMPONENTS=("Config", "Coin")
+export GAME_COMPONENTS=("Player" "Drone" "Game")
+
+# Use mocked Lords if lords_address not defined in Scarb
+export LORDS_ADDRESS=$(toml get Scarb.toml --raw tool.dojo.env.lords_address)
+if [[ -z "$LORDS_ADDRESS" ]]; then
+  echo "* using mock \$LORDS 👑"
+  export LORDS_ADDRESS=$(cat ./target/dev/manifest.json | jq -r '.contracts[] | select(.name == "dojo_starter::mocks::lords_mock::lords_mock" ).address')
+  export LORDS_COMPONENTS=("ERC20MetadataModel" "ERC20BalanceModel" "ERC20AllowanceModel" "ERC20BridgeableModel")
+fi
 
 echo "---------------------------------------------------------------------------"
-echo world : $WORLD_ADDRESS
+echo "sozo auth writer"
+echo "RPC        : $RPC_URL"
+echo "account    : $ACCOUNT_ADDRESS"
+echo "world      : $WORLD_ADDRESS"
+echo "admin      : $ADMIN_ADDRESS"
+echo "actions    : $ACTIONS_ADDRESS"
+echo "\$LORDS     : $LORDS_ADDRESS"
+echo "admin comps: ${ADMIN_COMPONENTS[*]}"
+echo "game comps : ${GAME_COMPONENTS[*]}"
+echo "lords comps: ${LORDS_COMPONENTS[*]}"
 echo "---------------------------------------------------------------------------"
 
 # enable system -> models authorizations
@@ -16,3 +45,34 @@ sozo auth grant --world $WORLD_ADDRESS --wait writer \
   >/dev/null
 
 echo "Default authorizations have been successfully set."
+
+echo "* Game auth..."
+for component in ${GAME_COMPONENTS[@]}; do
+  sozo auth writer --world $WORLD_ADDRESS --rpc-url $RPC_URL $component $ACTIONS_ADDRESS --account-address $ACCOUNT_ADDRESS
+  sleep $TX_SLEEP
+done
+
+echo "* Admin auth..."
+for component in ${ADMIN_COMPONENTS[@]}; do
+  sozo auth writer --world $WORLD_ADDRESS --rpc-url $RPC_URL $component $ADMIN_ADDRESS --account-address $ACCOUNT_ADDRESS
+  sleep $TX_SLEEP
+done
+
+# Mocked Lords
+if [[ ! -z "$LORDS_COMPONENTS" ]]; then
+  echo "* Mock Lords auth..."
+  for component in ${LORDS_COMPONENTS[@]}; do
+    sozo auth writer --world $WORLD_ADDRESS --rpc-url $RPC_URL $component $LORDS_ADDRESS --account-address $ACCOUNT_ADDRESS
+    sleep $TX_SLEEP
+  done
+  
+  echo "* Initializing Mock Lords..."
+  sozo execute $LORDS_ADDRESS initializer > /dev/null || true
+  sleep $TX_SLEEP
+fi
+
+echo "* Initializing Game World..."
+sozo execute $ADMIN_ADDRESS initialize --calldata 0x0,0x0,$LORDS_ADDRESS > /dev/null || true
+sleep $TX_SLEEP
+
+echo "* All set! 👍"

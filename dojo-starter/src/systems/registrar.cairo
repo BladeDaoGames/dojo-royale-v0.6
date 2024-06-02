@@ -40,12 +40,12 @@ mod registrar {
             let drone = Drones {
                 drone_id,
                 health,
-                atk: u8,
-                def: u8,
-                spd: u8,
-                range: u8,
-                artillery_range: u8,
-                bombs_remaining: u8
+                atk,
+                def,
+                spd,
+                range,
+                artillery_range,
+                bombs_remaining
             };
 
             set!(world, (drone));

@@ -6,7 +6,7 @@ struct Player {
     player_id: ContractAddress,
     //------------------------
     current_game_id: u128,
-    current_slot: u8,
+    current_slot: u8, // player 1/2/3/4/5/6
 
     name: felt252,
     profile_pic: u16,

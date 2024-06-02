@@ -3,8 +3,8 @@ version = 1
 
 [[package]]
 name = "dojo"
-version = "0.6.0"
-source = "git+https://github.com/dojoengine/dojo?tag=v0.6.0#fc5ad790c1993713e59f3fc65739160f132f29f0"
+version = "0.5.1"
+source = "git+https://github.com/dojoengine/dojo?tag=v0.6.0-alpha.0#afa4e93688d3c75de0cf2469d226b06ca85dbdd4"
 dependencies = [
  "dojo_plugin",
 ]
@@ -16,11 +16,12 @@ source = "git+https://github.com/dojoengine/dojo?tag=v0.3.11#1e651b5d4d3b79b14a7
 
 [[package]]
 name = "dojo_starter"
-version = "0.6.0"
+version = "0.6.0-alpha.0"
 dependencies = [
  "dojo",
  "openzeppelin",
  "pragma_lib",
+ "token",
 ]
 
 [[package]]
@@ -32,3 +33,11 @@ source = "git+https://github.com/OpenZeppelin/cairo-contracts.git?tag=v0.10.0#d7
 name = "pragma_lib"
 version = "1.0.0"
 source = "git+https://github.com/astraly-labs/pragma-lib#2eca9b70dc505788423da1eedbf2d65563cc3102"
+
+[[package]]
+name = "token"
+version = "0.0.0"
+source = "git+https://github.com/dojoengine/origami?tag=v0.6.0-alpha.0#178cfe9257b356c37607fd06586661810a76a365"
+dependencies = [
+ "dojo",
+]
