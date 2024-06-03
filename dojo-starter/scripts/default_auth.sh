@@ -22,7 +22,7 @@ export GAME_COMPONENTS=("Player" "Drone" "Game")
 export LORDS_ADDRESS=$(toml get Scarb.toml --raw tool.dojo.env.lords_address)
 if [[ -z "$LORDS_ADDRESS" ]]; then
   echo "* using mock \$LORDS 👑"
-  export LORDS_ADDRESS=$(cat ./target/dev/manifest.json | jq -r '.contracts[] | select(.name == "dojo_starter::mocks::lords_mock::lords_mock" ).address')
+  #export LORDS_ADDRESS=$(cat ./target/dev/manifest.json | jq -r '.contracts[] | select(.name == "dojo_starter::mocks::lords_mock::lords_mock" ).address')
   export LORDS_COMPONENTS=("ERC20MetadataModel" "ERC20BalanceModel" "ERC20AllowanceModel" "ERC20BridgeableModel")
 fi
 

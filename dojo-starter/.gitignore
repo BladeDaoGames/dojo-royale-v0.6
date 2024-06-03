@@ -4,3 +4,4 @@ target
 
 manifests/
 *.manifest
+.tool-versions

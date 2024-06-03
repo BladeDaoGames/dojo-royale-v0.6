@@ -81,7 +81,7 @@ mod lobby {
             // Get the address of the current caller, possibly the player's address.
             let caller = get_caller_address();
 
-            let mut player = get!(self.world(), caller, (Player));
+            //let mut player = get!(self.world(), caller, (Player));
             let drone = get!(self.world(), (drone_id), (Drones));
 
             // check if drone health is legit
